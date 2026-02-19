@@ -1,0 +1,94 @@
+@Restaurants.API_HostAddress = https://localhost:7014
+@token =CfDJ8J0aJH1hsUlAo6ymYJp2TWERyDKq5_6urn--tpFktgnDYXDoowMfGnQr3FZmJmB5YKyXc8hBu6Bsd2y5s4YPAKLAo0jHTKjThAg-lXo3d3ldF4c9O71zm_DnkGxgYXnu65Y35JQk7BDsL8Q3OUVzrwLeb5yVV5B-QXFUfNDG3Zwf_YQTRrO0pcPNDxJxdm4kuBkbzJqwE0VM80gMascRm5w7OFgNYcnkL9KgJqJ7iOcOPfw4Fw-lsILyYlpabScPrF9mFThGyTwSHsv8_0fFG7TBlq86_24zpQK_4pAznf3kg88yJ9vfdJ_9JgD7iPuKqupxaKohWgNxhvGHXzkheE8BPrs6rwiAAozMxE5HvlaWFTDafifa0nh1pm3lOrEazjzbLdL8ZE9UGBEpKhloOLabAEO8JsmvAo_zJxy84fhPwC7qqauwgG_aoMvfKl28GINsXrYvHe3MCzvEj7lmfxl6wH8-2Yjqo1jtdpnHkbf4YyYgXfe12GxuMefEjS8H4afGbrXkfOqEtJf0tn7jz49fDqp2ARdv-wfvZahyOV1MpIKaGt8oe0wazf0HfbffwrBBBuHQqNX33kFl3_gLR-YskWUJfhksH-YJIHqc5X8VewPzDpgo_xOM7a3bqn-S0IPEnnNxzxtJd2mYTjCjUTOEtWQk4D6DSTB0rAxjnLIMdD93iT3gYTX_2m5viulVheAcIIAg5Iz0DWaFF8kac1nDoyJYUsEeaZWrLG2WyPbpm3KJE9g8nS_hky6wTz-qK5Ljrouhz-Ye_5cg3J_DZTfMnyzUcDV-5SvmcHXQZtAQ
+GET {{Restaurants.API_HostAddress}}/api/restaurants
+//Authorization:Bearer {{token}}
+###
+
+GET {{Restaurants.API_HostAddress}}/api/Restaurants/10
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/{id:int}?id={{id}}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+Authorization :Bearer {{token}}
+
+{
+     "Name" : "Gad2 ",
+     "Category":"Indian",
+     "Description" :"Gad Egyptian fast food restaurant",
+     "ContactEmail" : "contact@Gad.com",
+     "ContactNumber" :"1234560",
+     "HasDelivery" : true,
+     "City" : "Cairo",
+     "Street":"10 cairo street",
+     "PostalCode":"12-345"
+}
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/Restaurants/3
+
+###
+
+PATCH {{Restaurants.API_HostAddress}}/api/Restaurants/10
+Content-Type: application/json
+
+
+{
+
+     "Name" : "Gad",
+     "Description" :"Gad Egyptian fast food restaurant located in mans",
+     "HasDelivery" : false
+     
+}
+###
+
+
+GET {{Restaurants.API_HostAddress}}/api/Restaurant/1/Dishes
+
+###
+
+
+GET {{Restaurants.API_HostAddress}}/api/Restaurant/1/Dishes/2
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/Restaurant/1/dishes
+Content-Type: application/json
+
+{
+      "Name":"Shawrma" ,
+      "Description" :"Shawrma is an egyption food",
+       "Price" :100,
+     "KiloCalories" : 200
+
+}
+
+###
+
+DELETE  {{Restaurants.API_HostAddress}}/api/Restaurant/1/dishes/3
+
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/Identity/register
+Content-Type: application/json
+
+{
+  "email" : "owner@gmail.com",
+  "password":"Test123@"
+}
+
+###
+POST  {{Restaurants.API_HostAddress}}/api/Identity/login
+Content-Type: application/json
+
+{
+  "email" : "Owner@gmail.com",
+  "password":"Test123@"
+}
+
