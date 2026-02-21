@@ -13,13 +13,14 @@ using Restaurants.Application.Restaurants.Commands.UploadRestaurantLoge;
 using Restaurants.Application.Restaurants.Dtos;
 using Restaurants.Application.Restaurants.Queries.GetAllRestaurant;
 using Restaurants.Application.Restaurants.Queries.GetAllRestaurant.GetRestaurantById;
+using Restaurants.Domain.Interfaces;
 using System.Reflection.Metadata.Ecma335;
 
 namespace Restaurants.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RestaurantsController( IMediator mediator) : ControllerBase
+    public class RestaurantsController( IMediator mediator ) : ControllerBase
     {
       //  [Authorize]
         [HttpGet]
@@ -41,6 +42,7 @@ namespace Restaurants.API.Controllers
             {
                 return NotFound();
             }
+           
             return Ok(restaurant);
         }
 

@@ -21,7 +21,7 @@ public class IdentityController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost("UserRole")]
-    [Authorize(Roles = UserRole.Admin)]
+   // [Authorize(Roles = UserRole.Admin)]
 
     public async Task<IActionResult> AssignUserRole(AssignUserRoleCommand command)
     {

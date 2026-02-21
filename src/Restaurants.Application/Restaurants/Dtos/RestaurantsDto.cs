@@ -20,8 +20,7 @@ public class RestaurantsDto
     public string City { get; set; }
     public string Street { get; set; }
     public string PostalCode { get; set; }
-
-   
+    public string? LogoUrl { get; internal set; }
 
     public static RestaurantsDto FromEntity(Restaurant r)
     {

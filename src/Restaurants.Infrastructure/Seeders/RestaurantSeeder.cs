@@ -59,7 +59,7 @@ internal class RestaurantSeeder(RestaurantDbContext dbContext) : IRestaurantSeed
         [
             new Restaurant
             {
-                Owner = owner,
+              Owner = owner,
               Name = "KFC",
               Category = "Fast Food",
               Description ="KFC is an american fast food restaurant",
