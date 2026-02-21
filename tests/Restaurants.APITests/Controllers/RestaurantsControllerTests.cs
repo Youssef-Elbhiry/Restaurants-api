@@ -12,6 +12,7 @@ using Restaurants.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Net.Http.Json;
 using Restaurants.Application.Restaurants.Dtos;
+using Restaurants.Infrastructure.Seeders;
 
 namespace Restaurants.API.Controllers.Tests;
 
@@ -21,16 +22,20 @@ public class RestaurantsControllerTests : IClassFixture<WebApplicationFactory<Pr
 
     private Mock<IRestaurantsRepository> _mockRepo = new();
 
+    private Mock<IRestaurantSeeder> restaurantseedermock = new();
+
     public RestaurantsControllerTests(WebApplicationFactory<Program> factory)
     {
         _factory = factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>
                 {
-                   // services.AddScoped<IPolicyEvaluator, FakePolicyEvaluator>();
+                    services.AddScoped<IPolicyEvaluator, FakePolicyEvaluator>();
                     services.Replace(ServiceDescriptor.Scoped<IRestaurantsRepository>(_ => _mockRepo.Object));
+                    services.Replace(ServiceDescriptor.Scoped(typeof(IRestaurantSeeder),_ => restaurantseedermock.Object));
                 });
         });
+
     }
 
     [Fact()]
