@@ -1,42 +1,67 @@
 # Restaurants API
 
-This is a **.NET 9.0 web API** for managing restaurants, following the principles of **Clean Architecture**.
+This is a **simple ASP.NET 9.0 Web API** for managing restaurants.  
+The project follows **Clean Architecture principles** and is divided into four layers:
 
----
+- **Presentation / API**: Handles HTTP requests and responses.  
+- **Application**: Contains business logic and CQRS commands/queries.  
+- **Domain**: Contains core entities and business rules.  
+- **Infrastructure**: Handles database access, file storage, and other external services.  
 
-## Video Course
-
-This solution is part of a video course.
-
-You can find the course at [https://linktr.ee/fullstack_developer](https://linktr.ee/fullstack_developer).
-
-The course covers the development of this .NET 9.0 web API for managing restaurants in detail, following **Clean Architecture principles**, CQRS with MediatR, FluentValidation, Serilog, and more.
+The project uses **SQL Server, Entity Framework, LINQ**, and other technologies for building a clean, maintainable API.
 
 ---
 
 ## Project Structure
 
-- `src/Restaurants.API`: The main API project. This is the entry point of the application.  
-- `src/Restaurants.Application`: Contains the **application logic**. This layer is responsible for the application's behavior and policies.  
-- `src/Restaurants.Domain`: Contains **enterprise logic and types**. This is the core layer of the application.  
-- `src/Restaurants.Infrastructure`: Contains **infrastructure-related code** such as database and file system interactions. This layer supports the higher layers.  
-- `tests/Restaurants.API.Tests`: Contains **unit and integration tests** for the API.  
+- `src/Restaurants.API` → The main API project, entry point of the application.  
+- `src/Restaurants.Application` → Application logic and CQRS handlers.  
+- `src/Restaurants.Domain` → Core entities and business rules.  
+- `src/Restaurants.Infrastructure` → Database, storage, and external dependencies.  
+- `tests/Restaurants.API.Tests` → Unit and integration tests for the API.
 
 ---
 
 ## Packages and Libraries
 
-This project uses several NuGet packages and libraries:
+- **Serilog** → Flexible logging  
+- **MediatR** → Implements CQRS pattern (commands and queries separation)  
+- **Entity Framework Core** → ORM for database access  
+- **FluentValidation** → Request validation  
+- **AutoMapper** → Maps between entities and DTOs  
+- **Microsoft Identity** → Handles authentication and authorization  
 
-- **Serilog**: Provides flexible logging for the API.  
-- **MediatR**: Implements the **CQRS pattern** for separating commands and queries.  
-- **Entity Framework**: ORM for working with database data via domain objects.  
-- **Azure Storage Account**: Handles **blob storage** for images, documents, and other unstructured data.  
-- **Microsoft Identity**: Provides authentication, authorization, and user management.  
-- **FluentValidation**: Validates request models with clear, reusable rules.  
-- **AutoMapper**: Maps between domain and DTO objects.  
+---
 
-> Please refer to the official documentation of each package for more details.
+## API Endpoints
+
+### Restaurants
+
+<img width="1813" height="500" alt="image" src="https://github.com/user-attachments/assets/e296963a-73d2-401c-b773-149198aaee43" />
+ 
+
+### Dishes
+<img width="1837" height="365" alt="image" src="https://github.com/user-attachments/assets/da2d530e-ba71-44bb-b752-bf2e7ccf9d6f" />
+
+
+### Identity
+
+<img width="1832" height="922" alt="image" src="https://github.com/user-attachments/assets/37c63054-161e-4388-a0ed-9fde34bef2c0" />
+
+---
+
+## Features
+
+- Clean Architecture with **four layers**: Presentation, Application, Domain, Infrastructure  
+- **CQRS pattern** using MediatR  
+- **Entity Framework Core** with LINQ for database operations  
+- **Serilog** for structured logging  
+- **FluentValidation** for request validation  
+- **AutoMapper** for mapping DTOs  
+- **Microsoft Identity** for authentication & authorization  
+- Unit and integration testing with **xUnit**  
+- Pagination, sorting, and filtering for endpoints  
+- Global exception handling middleware  
 
 ---
 
@@ -46,83 +71,25 @@ This project uses several NuGet packages and libraries:
 
 - .NET 9.0 SDK  
 - Visual Studio 2022 or later  
+- SQL Server or LocalDB  
 
-### Building
+### Build and Run
 
-Open `Restaurants.sln` in Visual Studio and **build the solution**.
-
-### Running
-
-Set `Restaurants.API` as the startup project in Visual Studio and start the application.
-
----
-
-## API Endpoints
-
-- `GET /api/restaurants`  
-  Parameters: `searchPhrase`, `pageSize`, `pageNumber`, `sortBy`, `sortDirection`  
-  Authorization: Bearer token  
-
-- `GET /api/restaurants/{id}`  
-  Parameters: `id`  
-  Authorization: Bearer token  
-
-- `GET /api/restaurants/{id}/dishes`  
-  Parameters: `id`  
-  Authorization: Bearer token  
-
-- `DELETE /api/restaurants/{id}/dishes`  
-  Parameters: `id`  
-
-- `GET /api/restaurants/{id}/dishes/{dishId}`  
-  Parameters: `id`, `dishId`  
-
-- `DELETE /api/restaurants/{id}`  
-  Parameters: `id`  
-  Authorization: Bearer token  
-
-- `POST /api/restaurants`  
-  Body: JSON object with properties:  
-  `Name`, `Description`, `Category`, `HasDelivery`, `ContactEmail`, `ContactNumber`, `City`, `Street`  
-  Authorization: Bearer token  
-
----
-
-## Features
-
-- **Clean Architecture** implementation  
-- **CQRS pattern** with **MediatR**  
-- **AutoMapper** for DTO mapping  
-- **Serilog** for logging  
-- **FluentValidation** for input validation  
-- **Global Exception Handling Middleware**  
-- **Unit and Integration Testing** with **xUnit**  
-- **Microsoft Identity** for authentication & authorization  
-- **Pagination and sorting** of results  
-- **CI/CD** pipeline for deployment to **Development** and **Production** environments  
-
----
-
-## Deployment
-
-This project is deployed using **GitHub Actions** CI/CD:
-
-- Build → Publish → Upload artifact  
-- Deploy to **Development** environment  
-- Deploy to **Production** environment  
-
-> Azure WebApps are used for hosting both environments.
+1. Open `Restaurants.sln` in Visual Studio.  
+2. Set `Restaurants.API` as the startup project.  
+3. Build the solution and run the API.  
+4. The API will be accessible at `https://localhost:{port}`.
 
 ---
 
 ## Testing
 
-- Unit tests are implemented in `tests/Restaurants.API.Tests`  
-- Integration tests verify API endpoints, database access, and middleware  
-- Tests cover validation, authorization, and CRUD operations  
+- Unit tests and integration tests are in `tests/Restaurants.API.Tests`  
+- Tests cover CRUD operations, validation, authentication, and authorization  
 
 ---
 
-## License
+## Deployment
 
-This project is part of a **paid video course**. Please refer to the course link for usage instructions.
+- Can be deployed to **Azure Web Apps** or any hosting supporting .NET 9.0.  
+- CI/CD can be configured using **GitHub Actions** for automated build and deployment.
