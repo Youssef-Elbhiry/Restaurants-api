@@ -25,12 +25,12 @@ jobs:
         run: dotnet build --no-restore -c Release
         
       - name: publish
-        run: dotnet publish .\src\Restaurants.API\Restaurants.API.csproj -c Release -o ${{env.DOTNET-ROOT}}\api --no-build
+        run: dotnet publish ./src/Restaurants.API/Restaurants.API.csproj -c Release -o ${{env.DOTNET-ROOT}}/api --no-build
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v6.0.0
         with:
           name: api-artifact
-          path:  ${{ env.DOTNET-ROOT }}\api   
+          path:  ${{ env.DOTNET-ROOT }}/api   
 
   deploy-dev:
      runs-on: ubuntu-latest
