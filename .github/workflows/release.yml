@@ -44,7 +44,7 @@ jobs:
          uses: Azure/webapps-deploy@v2.2.17
          with:
           app-name: restaurant-api-dev
-          publish-profile: ${{secrets.PUBLISH_PROFILE-DEV}}
+          publish-profile: ${{secrets.PUBLISH_PROFILE_DEV}}
           
   deploy-prod:
      runs-on: ubuntu-latest
@@ -58,6 +58,6 @@ jobs:
          uses: Azure/webapps-deploy@v2.2.17
          with:
           app-name: restaurants-api-prod
-          publish-profile: ${{secrets.PUBLIC_PROFILE-DEV}}
+          publish-profile: ${{secrets.PUBLIC_PROFILE_DEV}}
   
 
